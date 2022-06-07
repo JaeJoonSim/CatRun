@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("플레이어 이동속도")]
     public float speed;
 
-    float moveX;
+
     Vector3 pos;
 
     private void Start()
@@ -20,9 +20,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveX = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+        if (!GameManager.start) return;
+
+            //moveX = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
         //transform.Translate(new Vector2(moveX, 0));
-        NetworkManager.GetComponent<NetworkManager>().SendData((int)Input.GetAxisRaw("Horizontal"));
+
+        int dir = (int)Input.GetAxisRaw("Horizontal");
+
+        string BufData;
+        if (dir == -1)
+            BufData = "-1";
+        else if (dir == 1)
+            BufData = "1";
+        else
+            BufData = "0";
+        float posx = transform.position.x;
+        double rd3 = Math.Round(posx, 1);
+        BufData = string.Format("pos,{0},{1},{2}", GameManager.playerName, BufData, rd3);
+
+        BufData = NetworkManager.GetComponent<NetworkManager>().SendData(BufData);
+        string[] Data = BufData.Split(',');
+        transformCat(Data[0]);
+
 
         // 화면 밖으로 못나가게 하기
         pos = Camera.main.WorldToViewportPoint(transform.position);

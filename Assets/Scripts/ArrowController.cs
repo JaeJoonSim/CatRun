@@ -15,6 +15,8 @@ public class ArrowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.start) return;
+
         transform.Translate(0, -0.04f, 0);
 
         if(transform.position.y < -5.0f)
