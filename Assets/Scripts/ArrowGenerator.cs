@@ -17,7 +17,7 @@ public class ArrowGenerator : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!GameManager.start) return;
         delta += Time.deltaTime;
@@ -25,10 +25,9 @@ public class ArrowGenerator : MonoBehaviour
         {
             delta = 0;
             GameObject go = Instantiate(arrowPrefab);
+            int px;
 
-            //string Data = NetworkManager.GetComponent<NetworkManager>().SendData("Random");
-
-            int px = NetworkManager.GetComponent<NetworkManager>().RandominServer;
+            px = NetworkManager.GetComponent<NetworkManager>().RandominServer;
             go.transform.position = new Vector3(px, 7, 0);
         }
     }

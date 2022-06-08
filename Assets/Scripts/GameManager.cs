@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
         Application.runInBackground = true;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+            NameChack();
+    }
+
     public void NameChack()
     {
         playerName = Name_input.text;
@@ -39,12 +45,18 @@ public class GameManager : MonoBehaviour
             if(txt[1] == "O")
             {
                 Name_UI.SetActive(false);
-                start = true;
+                NetworkManager.GetComponent<NetworkManager>().Netstart = true;
+                NetworkManager.GetComponent<NetworkManager>().HP = HP;
+                //start = true;
             }
             else
             {
                 Warning();
             }
+        }
+        if (!start)
+        {
+            HP = 10;
         }
     }
 
@@ -53,10 +65,14 @@ public class GameManager : MonoBehaviour
         Warning_UI.SetActive(true);
         return;
     }
-
+    public void Exit()
+    {
+        Application.Quit();
+    }
     public void DecreaseHP()
     {
         HP--;
+        NetworkManager.GetComponent<NetworkManager>().HP = HP;
         hpGage.GetComponent<Image>().fillAmount = HP * 0.1f;
     }
     public void SetResolution()

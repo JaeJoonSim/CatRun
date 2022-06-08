@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
+    float SPEED = -5f;
     GameObject player;
 
     // Start is called before the first frame update
@@ -15,9 +16,10 @@ public class ArrowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.start) return;
+        if (!GameManager.start) Destroy(gameObject);
 
-        transform.Translate(0, -0.04f, 0);
+        float speed = SPEED * Time.deltaTime;
+        transform.Translate(0, speed, 0);
 
         if(transform.position.y < -5.0f)
         {

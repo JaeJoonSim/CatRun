@@ -11,8 +11,11 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -59,9 +62,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1452}
     - Class: 114
-      Script: {instanceID: 1518}
+      Script: {instanceID: 1674}
     - Class: 114
-      Script: {instanceID: 1676}
+      Script: {instanceID: 2252}
     - Class: 114
       Script: {instanceID: 2682}
     - Class: 114
@@ -105,22 +108,16 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 699619b86d9359741a4f58540298c80b
+      Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
-    className: Text
+    className: Image
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
-  - hash:
-      serializedVersion: 2
-      Hash: a6e561615949734e9f12f9b61661f43e
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
   - hash:
       serializedVersion: 2
       Hash: 77aaaaa51f7a8d8ff333a879741e47d2
@@ -159,7 +156,7 @@ ScriptsOnlyBuild:
     className: LayoutElement
   - hash:
       serializedVersion: 2
-      Hash: 4ce15e99c635d2567873d27549d1f16f
+      Hash: 8660972cce164364781f5d0113c331f5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OtherPlayerController
@@ -211,6 +208,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 699619b86d9359741a4f58540298c80b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
       Hash: 91d258529db2b5060a913f2afcea1a21
@@ -549,7 +552,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 2634377780a8cd46a1f5bdebe82a0664
+      Hash: 0b2c15130dfe9602f2e6abb0821701b7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkManager
@@ -585,7 +588,7 @@ ScriptsOnlyBuild:
     className: SpriteSkinEntity
   - hash:
       serializedVersion: 2
-      Hash: b26cf8aa1a363f8c549ef3855e0a18cb
+      Hash: e99f78404337ddcb1e90f26e9dd8efa6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -658,4 +661,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/GameScene.unity
-  playerPath: D:/bulid/catrun/CatRun.exe
+  playerPath: E:/build/CatRun/CatRun.exe

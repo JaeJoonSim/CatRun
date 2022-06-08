@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 // 네트워크 관련 추가
 using System;
 using System.Net;
@@ -10,12 +11,14 @@ using System.Text;
 public class NetworkManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject player , player2;
+    GameObject player , player2, Game_End;
     Socket clntSocket;
     EndPoint serverEP;
     Dictionary<string, GameObject> playerList = new Dictionary<string, GameObject>();
 
+    public bool Netstart = false;
     public int RandominServer;
+    public int HP;
 
     // Start is called before the first frame update
     void Start()
@@ -28,20 +31,27 @@ public class NetworkManager : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (!GameManager.start) return;
+        if (!Netstart) return;
     
         try
         {
             PosCheck();
+            Random();
+            HPCheck();
             //RackStep();
         }
         catch (Exception e)
         {
+            //GameManager.start = false;
             Debug.Log(e);
         }
 
     }
-
+    void Random()
+    {
+        string Data = SendData("Random");
+        RandominServer = int.Parse(Data);
+    }
     void RackStep()
     {
         byte[] recvBytes = new byte[16];
@@ -57,7 +67,7 @@ public class NetworkManager : MonoBehaviour
                     if (playerList.ContainsKey(Data[1]))
                     {
                         playerList[Data[1]].GetComponent<OtherPlayerController>().Pos(Data[3]);
-                        playerList[Data[1]].GetComponent<OtherPlayerController>().HPUI(Data[2]);
+                        //playerList[Data[1]].GetComponent<OtherPlayerController>().HPUI(Data[2]);
                     }
                     else
                     {
@@ -126,9 +136,61 @@ public class NetworkManager : MonoBehaviour
         if(Del != null)
         {
             Debug.Log(Del);
-            GameManager.start = false;
             playerList.Remove(Del);
         }
+        if(playerList.Count > 0)
+        {
+            GameManager.start = true;
+        }
+        else
+        {
+            GameManager.start = false;
+        }
+    }
+
+    void HPCheck()
+    {
+        int hp = HP;
+        string BufData = string.Format("hp,{0},{1}", GameManager.playerName, hp);
+        BufData = SendData(BufData);
+
+        Debug.Log(BufData);
+        if (hp < 1)
+        {
+            GameEnd(true);
+        }
+        string[] str = BufData.Split(':');
+
+        for (int i = 0; i < str.Length - 1; i++)
+        {
+            string[] Data = str[i].Split(',');
+            if (Data[0] != GameManager.playerName)
+                if (playerList.ContainsKey(Data[0]))
+                {
+                    int _hp = int.Parse(Data[1]);
+                    if (_hp < 1)
+                    {
+                        GameEnd(false);
+                    }
+                    playerList[Data[0]].GetComponent<OtherPlayerController>().HPUI(_hp);
+                }
+        }
+    }
+
+    void GameEnd(bool who)
+    {
+        Debug.Log("End");
+        Game_End.SetActive(true);
+        GameManager.start = false;
+        if (who)
+        {
+            Game_End.transform.Find("Text").transform.GetComponent<Text>().text = "You lose";
+        }
+        else
+        {
+            Game_End.transform.Find("Text").transform.GetComponent<Text>().text = "You Win";
+        }
+
     }
 
     public string SendData(string BufData)
@@ -151,6 +213,7 @@ public class NetworkManager : MonoBehaviour
         }
         catch (Exception e)
         {
+            //GameManager.start = false;
             Debug.Log(e);
         }
         return txt;

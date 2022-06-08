@@ -50,3 +50,39 @@ D:\Unity_project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\runtimes\win\lib\ne
 D:\Unity_project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Unity_project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\Unity_project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.csproj.CopyComplete
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\UDPServer.exe
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\UDPServer.deps.json
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\UDPServer.runtimeconfig.json
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\UDPServer.runtimeconfig.dev.json
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\UDPServer.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\ref\UDPServer.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\UDPServer.pdb
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\Google.Protobuf.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\K4os.Compression.LZ4.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\K4os.Compression.LZ4.Streams.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\K4os.Hash.xxHash.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\Microsoft.Win32.SystemEvents.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\MySql.Data.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\Ubiety.Dns.Core.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\ZstdNet.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\System.Drawing.Common.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\System.Security.Permissions.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\System.Windows.Extensions.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\unity project\CatRun\UDPServer\UDPServer\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.csproj.AssemblyReference.cache
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.GeneratedMSBuildEditorConfig.editorconfig
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.AssemblyInfoInputs.cache
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.AssemblyInfo.cs
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.csproj.CoreCompileInputs.cache
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.csproj.CopyComplete
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.dll
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\ref\UDPServer.dll
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.pdb
+E:\unity project\CatRun\UDPServer\UDPServer\obj\Debug\net5.0\UDPServer.genruntimeconfig.cache

@@ -28,13 +28,14 @@ class Program
 
         Console.WriteLine("*** 고양이 게임용 서버 입니다. ***");
         Console.WriteLine("종료하려면 아무 키나 누르세요...");
-        Thread thread = new Thread(() => RackStep());
+        Thread thread = new Thread(() => RockStep());
         thread.Start();
         Console.ReadLine();
 
     }
 
-    public static void RackStep()
+    //RockStep 을 해보려 했던것
+    public static void RockStep()
     {
         Random randomobj = new Random();
         while (true)
@@ -42,20 +43,21 @@ class Program
             string txt;
             random_num = randomobj.Next(-7,7);
 
-            Thread.Sleep(500);
-            txt = string.Format("Random,{0}", random_num);
-            sendAll(txt);
+            //Thread.Sleep(500);
+            //txt = string.Format("Random,{0}", random_num);
+            //sendAll(txt);
 
+            //RockStep 을 해보려 했던것
             //Console.WriteLine("Random: " + random_num);
-            if (playerData == null) return;
-            foreach (KeyValuePair<string, string> item in playerData)
-            {
-                 txt = string.Format("R,{0},{1}", item.Key, item.Value);
-                sendAll(txt);
-            }
+            //if (playerData == null) return;
+            //foreach (KeyValuePair<string, string> item in playerData)
+            //{
+            //     txt = string.Format("R,{0},{1}", item.Key, item.Value);
+            //    sendAll(txt);
+            //}
         }
     }
-
+    //RockStep 을 해보려 할때 모든 클라이언트 들에게 메세지전달
     static void sendAll(string txt)
     {
         if (PlayerIP == null) return;
@@ -71,9 +73,6 @@ class Program
 
     private static void serverFunc(object obj)
     {
-
-  
-
         srvSocket.Bind(endPoint);
         Console.WriteLine("고양이 게임을 위한 UDP 서버가 동작을 시작했습니다.");
 
@@ -84,6 +83,7 @@ class Program
         {
             int nRecv = srvSocket.ReceiveFrom(recvBytes, ref clientEP);
             string txt = Encoding.UTF8.GetString(recvBytes, 0, nRecv);
+            Console.WriteLine("recv: " + txt);
 
             //Console.WriteLine("ip: " + clientEP);
 
@@ -91,34 +91,30 @@ class Program
             byte[] sendBytes ;
             switch (Data[0]) 
             {
+                case "Random":
+                    txt = "" + random_num;
+                    break;
                 case "Exit":
+                    playerpos.Remove(Data[1]);
+                    playerHP.Remove(Data[1]);
                     playerData.Remove(Data[1]);
-                    PlayerIP.Remove(clientEP);
-                    sendAll(txt);
+                    //PlayerIP.Remove(clientEP);
+                    //sendAll(txt);
                     break;
                 case "hp":
                     if (playerHP.ContainsKey(Data[1]))
                     {
-                        playerHP[Data[1]] = Data[3];
+                        playerHP[Data[1]] = Data[2];
                     }
                     else
                     {
-                        playerHP.Add(Data[1], Data[3]);
+                        playerHP.Add(Data[1], Data[2]);
                     }
-                    playerData[Data[1]] = string.Format("{0},{1}", playerHP[Data[1]], playerpos[Data[1]]);
-                    txt = Data[2];
-                    break;
-                case "Pos":
-                    if (playerHP.ContainsKey(Data[1]))
+                    txt = "";
+                    foreach (KeyValuePair<string, string> item in playerHP)
                     {
-                        playerHP[Data[1]] = Data[3];
+                        txt += string.Format("{0},{1}:", item.Key, item.Value);
                     }
-                    else
-                    {
-                        playerHP.Add(Data[1], Data[3]);
-                    }
-                    playerData[Data[1]] = string.Format("{0},{1}", playerHP[Data[1]], playerpos[Data[1]]);
-                    txt = Data[2];
                     break;
                 case "pos":
                     if (playerpos.ContainsKey(Data[1]))
@@ -129,8 +125,11 @@ class Program
                     {
                         playerpos.Add(Data[1], Data[2]);
                     }
-                    playerData[Data[1]] = string.Format("{0},{1}", playerHP[Data[1]], playerpos[Data[1]]);
-                    txt = Data[2];
+                    txt = "";
+                    foreach (KeyValuePair<string, string> item in playerpos)
+                    {
+                        txt += string.Format("{0},{1}:", item.Key, item.Value);
+                    }
                     break;
                 case "Check":
                     txt = "Check,";
@@ -141,8 +140,10 @@ class Program
                     else
                     {
                         txt += "O";
+
                         playerHP.Add(Data[1], "10");
                         playerpos.Add(Data[1], "0");
+                        playerData.Add(Data[1], string.Format("{0},{1}", playerHP[Data[1]], playerpos[Data[1]]));
                         PlayerIP.Add(clientEP);
                     }              
                     break;
@@ -177,9 +178,35 @@ class Program
                         }
                     }
                     break;
+                #region RockStep
+                case "Hp":
+                    if (playerHP.ContainsKey(Data[1]))
+                    {
+                        playerHP[Data[1]] = Data[3];
+                    }
+                    else
+                    {
+                        playerHP.Add(Data[1], Data[3]);
+                    }
+                    playerData[Data[1]] = string.Format("{0},{1}", playerHP[Data[1]], playerpos[Data[1]]);
+                    txt = Data[2];
+                    break;
+                case "Pos":
+                    if (playerpos.ContainsKey(Data[1]))
+                    {
+                        playerpos[Data[1]] = Data[3];
+                    }
+                    else
+                    {
+                        playerpos.Add(Data[1], Data[3]);
+                    }
+                    playerData[Data[1]] = string.Format("{0},{1}", playerHP[Data[1]], playerpos[Data[1]]);
+                    txt = Data[2];
+                    break;
+                    #endregion
             }
 
-            //Console.WriteLine("send: " + txt);
+            Console.WriteLine("send: " + txt);
             sendBytes = Encoding.UTF8.GetBytes(txt);
             srvSocket.SendTo(sendBytes, clientEP);
 

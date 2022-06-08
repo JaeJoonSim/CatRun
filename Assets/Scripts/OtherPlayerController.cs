@@ -22,9 +22,9 @@ public class OtherPlayerController : MonoBehaviour
         float x = float.Parse(P);
         transform.position = new Vector3(x, transform.position.y, transform.position.z);
     }
-    public void HPUI(string P)
+    public void HPUI(int P)
     {
-        HP = int.Parse(P);
+        HP = P;
         hpGage.GetComponent<Image>().fillAmount = HP * 0.1f;
     }
 }
